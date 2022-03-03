@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射，namespace命名空间，随便写，但是不能重复-->
+<mapper namespace="StudentMapper">
+    <!--select对应查询语句，id唯一的，可以随便写-->
+    <select id="select" resultType="com.fc.entity.Student">
+        select * from student where id = 1
+    </select>
+</mapper>
