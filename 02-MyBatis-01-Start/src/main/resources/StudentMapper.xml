@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--映射，namespace命名空间，必须和接口的完整包名.类名完全一致-->
-<mapper namespace="com.com.fc.dao.StudentDao">
+<mapper namespace="com.fc.dao.StudentDao">
     <!--select对应查询语句，id唯一的，可以随便写-->
-    <select id="select" resultType="com.com.fc.entity.Student">
+    <select id="select" resultType="com.fc.entity.Student">
         select * from student where id = 1
     </select>
 

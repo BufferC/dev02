@@ -10,87 +10,37 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MyBatisTest {
     @Test
-    public void testFindStudentById() {
-
+    public void testInsertOnObject() {
         try {
-            // 读取配置文件到流中
             InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
-            // 构建会话工厂
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
 
-            // 获取连接
             SqlSession session = factory.openSession();
 
-            // 获取接口的实现类
             StudentDao studentDao = session.getMapper(StudentDao.class);
 
-            Student student = studentDao.findStudentById(3);
+            Student student = new Student();
+            student.setName("鞠婧祎");
+            student.setAge((byte) 27);
+            student.setGender("女");
+            student.setBirthday(new Date());
+            student.setInfo("四千年第一美女");
 
-            System.out.println(student);
+            int affectedRows = studentDao.insertStudent(student);
+
+            System.out.println("受影响的行数：" + affectedRows);
 
             session.commit();
 
             session.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void testFindAll() {
-
-        try {
-            // 读取配置文件，获取流
-            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-
-            // 构建工厂
-            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-
-            // 获取连接
-            SqlSession session = factory.openSession();
-
-            // 获取接口的实现类
-            StudentDao studentDao = session.getMapper(StudentDao.class);
-
-            List<Student> students = studentDao.findAll();
-
-            for (Student student : students) {
-                System.out.println(student);
-            }
-
-            // 提交事务
-            session.commit();
-
-            // 关闭资源
-            session.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void testInterface() {
-        // 读取配置文件
-        try {
-            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-
-            // 构建会话工厂
-            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-
-            // 获取连接
-            SqlSession session = factory.openSession();
-
-            // 通过反射获取接口的实现类
-            StudentDao studentDao = session.getMapper(StudentDao.class);
-
-            Student student = studentDao.findById();
-
-            System.out.println(student);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,24 +49,73 @@ public class MyBatisTest {
     @Test
     public void testInsert() {
         try {
-            // 读取配置文件到流中
             InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
-            // 构建SqlSession工厂
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
 
-            // 生产SqlSession->QueryRunner、Connection
             SqlSession session = factory.openSession();
 
-            // 执行sql语句获取受影响的行数
-            int affectedRows = session.insert("StudentMapper.insert");
+            StudentDao studentDao = session.getMapper(StudentDao.class);
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", "铠甲勇士");
+            map.put("age", 20);
+            map.put("gender", "男");
+            map.put("birthday", new Date());
+            map.put("info", "地虎侠，话费侠");
+
+            int affectedRows = studentDao.insert(map);
 
             System.out.println("受影响的行数：" + affectedRows);
 
-            // 提交事务
             session.commit();
 
-            // 关闭资源
+            session.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testFindByGenderAndName() {
+        try {
+            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+
+            SqlSession session = factory.openSession();
+
+            StudentDao studentDao = session.getMapper(StudentDao.class);
+
+            Student student = studentDao.findByGenderAndName("男", "易烊千玺");
+
+            System.out.println(student);
+
+            session.commit();
+
+            session.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testFindByAgeAndName() {
+        try {
+            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+
+            SqlSession session = factory.openSession();
+
+            StudentDao studentDao = session.getMapper(StudentDao.class);
+
+            Student student = studentDao.findByAgeAndName(22, "易烊千玺");
+
+            System.out.println(student);
+
+            session.commit();
+
             session.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -126,22 +125,23 @@ public class MyBatisTest {
     @Test
     public void test() {
         try {
-            // 读取配置文件中的内容到流中
             InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
-            // 获取MyBatis核心类对象SqlSessionFactory
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
 
-            // 通过会话工厂获取连接，相当于queryRunner
-            SqlSession sqlSession = sqlSessionFactory.openSession();
+            SqlSession session = factory.openSession();
 
-            //sqlSession
-            Object o = sqlSession.selectOne("StudentMapper.select");
+            StudentDao studentDao = session.getMapper(StudentDao.class);
 
-            System.out.println(o);
+            Student student = studentDao.findByIdAndName(1, "易烊千玺");
+
+            System.out.println(student);
+
+            session.commit();
+
+            session.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
