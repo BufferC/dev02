@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射，namespace命名空间，必须和接口的完整包名.类名完全一致-->
+<mapper namespace="com.fc.dao.StudentDao">
+    <insert id="insert">
+        insert into student(name, age, gender, birthday, info) values (#{name}, #{age}, #{gender}, #{birthday}, #{info})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        delete from student where id = #{id}
+    </delete>
+
+    <update id="update">
+        update student set info = #{info} where id = #{id}
+    </update>
+
+    <select id="findAll" resultType="com.fc.entity.Student">
+        select * from student
+    </select>
+
+    <select id="findById" parameterType="Integer" resultType="com.fc.entity.Student">
+        select * from student where id = #{id}
+    </select>
+
+    <select id="findByKeyword" parameterType="String" resultType="com.fc.entity.Student">
+        select * from student where name like #{keyword}
+    </select>
+
+    <!--主键回填-->
+    <!--useGeneratedKeys:默认是false，设置为true开启主键回填-->
+    <!--keyProperty:主键回填的位置，一般都是id-->
+    <insert id="getIncrement" useGeneratedKeys="true" keyProperty="id">
+        insert into student(name, age, gender, birthday, info) values (#{name}, #{age}, #{gender}, #{birthday}, #{info})
+    </insert>
+</mapper>
+
+
+
+
+
+
