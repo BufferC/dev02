@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射，namespace命名空间，必须和接口的完整包名.类名完全一致-->
+<mapper namespace="com.fc.dao.StudentDao">
+    <!--sql用于声明一个代码片段-->
+    <sql id="field">
+        id, name, age, gender, birthday
+    </sql>
+
+    <!--include用于导入可复用的代码片段-->
+    <select id="findAll" resultType="com.fc.entity.Student">
+        select <include refid="field"/> from student
+    </select>
+
+    <select id="findByKeyword" resultType="com.fc.entity.Student">
+        select <include refid="field"/>
+        from student
+        where 1 = 1
+        <if test="name != null">
+            and name like #{name}
+        </if>
+
+        <if test="age != null">
+            and age = #{age}
+        </if>
+    </select>
+
+    <select id="findByStudent" resultType="com.fc.entity.Student">
+        select <include refid="field"/> from student
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+
+            <if test="name != null">
+                and name = #{name}
+            </if>
+
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+
+            <if test="age != null">
+                and age = #{age}
+            </if>
+
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+
+            <if test="info != null">
+                and info = #{info}
+            </if>
+        </where>
+    </select>
+
+    <update id="update">
+        update student
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+
+            <if test="age != null">
+                age = #{age},
+            </if>
+
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+
+            <if test="info != null">
+                info = #{info},
+            </if>
+        </set>
+
+        where id = #{id}
+    </update>
+</mapper>
+
+
+
+
+
+
