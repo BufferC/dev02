@@ -9,6 +9,29 @@ import java.util.List;
 
 public class DynamicSQLTest {
     @Test
+    public void testDeleteMore() {
+        StudentDao studentDao = MyBatisUtil.getMapper(StudentDao.class);
+
+        int affectedRows = studentDao.deleteMore(7, 8, 9, 10, 5, 6);
+
+        MyBatisUtil.commit();
+    }
+
+    @Test
+    public void testUpdateWithTrim() {
+        StudentDao studentDao = MyBatisUtil.getMapper(StudentDao.class);
+
+        Student student = new Student();
+        student.setId(10);
+        student.setAge((byte) 20);
+        student.setName("爷傲奈我何、");
+
+        int affectedRows = studentDao.updateWithTrim(student);
+
+        MyBatisUtil.commit();
+    }
+
+    @Test
     public void testUpdate() {
         StudentDao studentDao = MyBatisUtil.getMapper(StudentDao.class);
 
@@ -20,6 +43,22 @@ public class DynamicSQLTest {
         int affectedRows = studentDao.update(student);
 
         MyBatisUtil.commit();
+    }
+
+    @Test
+    public void testFindStudentWithTrim() {
+        StudentDao studentDao = MyBatisUtil.getMapper(StudentDao.class);
+
+        Student student = new Student();
+        student.setGender("男");
+        student.setAge((byte) 20);
+        student.setId(6);
+
+        List<Student> students = studentDao.findByStudentWithTrim(student);
+
+        for (Student temp : students) {
+            System.out.println(temp);
+        }
     }
 
     @Test

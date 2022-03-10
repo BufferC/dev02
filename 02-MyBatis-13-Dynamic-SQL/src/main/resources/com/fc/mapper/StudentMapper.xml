@@ -57,6 +57,35 @@
         </where>
     </select>
 
+    <select id="findByStudentWithTrim" resultType="com.fc.entity.Student">
+        select <include refid="field"/> from student
+        <trim prefix="where" prefixOverrides="and">
+            <if test="id != null">
+                and id = #{id}
+            </if>
+
+            <if test="name != null">
+                and name = #{name}
+            </if>
+
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+
+            <if test="age != null">
+                and age = #{age}
+            </if>
+
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+
+            <if test="info != null">
+                and info = #{info}
+            </if>
+        </trim>
+    </select>
+
     <update id="update">
         update student
         <set>
@@ -83,6 +112,40 @@
 
         where id = #{id}
     </update>
+
+    <update id="updateWithTrim">
+        update student
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null">
+                name = #{name},
+            </if>
+
+            <if test="age != null">
+                age = #{age},
+            </if>
+
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+
+            <if test="info != null">
+                info = #{info},
+            </if>
+        </trim>
+
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMore">
+        delete from student where id in
+        <foreach collection="array" open="(" close=")" separator="," item="id" index="i">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>
 
 
