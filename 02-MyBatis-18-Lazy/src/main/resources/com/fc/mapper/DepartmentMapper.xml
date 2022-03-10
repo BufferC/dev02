@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射，namespace命名空间，必须和接口的完整包名.类名完全一致-->
+<mapper namespace="com.fc.dao.DepartmentDao">
+    <resultMap id="findByIdMap" type="com.fc.entity.Department">
+        <id column="dept_id" property="id"/>
+        <result column="dept_name" property="name"/>
+
+        <collection column="dept_id" select="com.fc.dao.EmployeeDao.findById" property="employees" javaType="List" ofType="com.fc.entity.Employee"/>
+
+    </resultMap>
+
+    <select id="findById" resultMap="findByIdMap">
+        select *
+        from department where dept_id = #{id}
+    </select>
+</mapper>
+
+
+
+
+
+
