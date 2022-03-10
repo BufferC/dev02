@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--映射，namespace命名空间，必须和接口的完整包名.类名完全一致-->
+<mapper namespace="com.fc.dao.StudentDao">
+    <!--开启二级缓存，当前namespace下的所有查询sql 语句都有缓存-->
+    <!--readonly：是否只读-->
+    <!--flushInterval：刷新间隔（毫秒值）-->
+    <!--size：缓存的个数-->
+    <!--eviction：回收策略
+    FIFO：First in first out
+    LRU：最近最少使用
+    SOFT：软引用
+    WEAK：弱引用
+    type：自定义缓存策略类型-->
+    <cache/>
+
+    <!--useCache="false"：可以关闭当前sql语句的缓存-->
+    <select id="findById" parameterType="Integer" resultType="com.fc.entity.Student">
+        select * from student where id = #{id}
+    </select>
+
+    <!--flushCache="false":增删改操作如果配置了这个参数就不会刷新缓存了-->
+    <update id="update">
+        update student set info = #{info} where id = #{id}
+    </update>
+</mapper>
+
+
+
+
+
+
