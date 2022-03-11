@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--id和name属性都是用来给对象起名字的，id表示唯一标识，只能有一个
+    name可以有多个，建议永远都要加上id-->
+    <bean id="student" class="com.fc.entity.Student"/>
+</beans>
