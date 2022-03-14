@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--无参构造-->
+    <bean id="student" class="com.fc.entity.Student"/>
+
+    <!--创建工厂-->
+    <bean id="studentFactory" class="com.fc.factory.StudentFactory"/>
+
+    <bean id="student2" factory-bean="studentFactory" factory-method="getStudent"/>
+
+    <!--静态工厂-->
+    <bean id="student3" class="com.fc.factory.StudentStaticFactory" factory-method="getStudent"/>
+</beans>

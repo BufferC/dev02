@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--init-method：指定的方法会在Spring容器创建对象后立即执行
+    destroy-method：指定的方法会在容器关闭前，销毁掉所有对象时执行-->
+    <bean init-method="init" destroy-method="destroy" id="student" class="com.fc.entity.Student"/>
+</beans>
