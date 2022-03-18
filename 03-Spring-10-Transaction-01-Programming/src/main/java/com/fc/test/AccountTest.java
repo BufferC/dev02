@@ -1,21 +1,17 @@
 package com.fc.test;
 
-import com.fc.service.UserService;
+import com.fc.service.AccountService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class XMLTest {
+public class AccountTest {
     @Test
     public void test() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        UserService userService = applicationContext.getBean(UserService.class);
+        AccountService accountService = applicationContext.getBean(AccountService.class);
 
-        userService.add();
-
-        System.out.println("-------------华丽-------------");
-
-        userService.update();
+        accountService.transfer(1, 2, 100L);
     }
 }
