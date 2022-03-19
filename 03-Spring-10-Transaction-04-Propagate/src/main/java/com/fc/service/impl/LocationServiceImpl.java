@@ -4,6 +4,8 @@ import com.fc.dao.LocationDao;
 import com.fc.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class LocationServiceImpl implements LocationService {
@@ -11,6 +13,7 @@ public class LocationServiceImpl implements LocationService {
     private LocationDao locationDao;
 
     @Override
+    @Transactional(propagation = Propagation.NESTED)
     public void addLocation(String name) {
         locationDao.addLocation(name);
     }

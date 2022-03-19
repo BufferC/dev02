@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Propagate {
+public class PropagateTest {
     @Test
     public void test() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(TxConfig.class);

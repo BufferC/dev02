@@ -5,6 +5,8 @@ import com.fc.service.AccountService;
 import com.fc.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -14,12 +16,16 @@ public class AccountServiceImpl implements AccountService {
     private LocationService locationService;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void addAccount(String name, String location) {
 
         accountDao.addAccount(name);
 
-        int num = 1 / 0;
+        try {
+            locationService.addLocation(location);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        locationService.addLocation(location);
     }
 }
