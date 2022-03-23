@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1 align="center">
-        <a href="success.jsp">登录</a>
+        <a href="/success.jsp">登录</a>
     </h1>
 </body>
 </html>

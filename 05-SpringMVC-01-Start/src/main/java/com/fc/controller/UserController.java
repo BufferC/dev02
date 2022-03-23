@@ -15,7 +15,8 @@ public class UserController {
 
         // 指定页面跳转的路径，注意加/代表从根路径开始
         // 如果使用void会404，但是没关系，后面再说视图解析的事
-        return "/success.jsp";
+        // 如果需要页面跳转，必须通过根路径的方式，必须加 /
+        return "/login.jsp";
     }
 
     @RequestMapping("add")
