@@ -11,6 +11,6 @@
     <title>成功</title>
 </head>
 <body>
-    <h1 align="center" style="color: greenyellow">成功</h1>
+    <h1 align="center" style="color: greenyellow">${username}成功</h1>
 </body>
 </html>

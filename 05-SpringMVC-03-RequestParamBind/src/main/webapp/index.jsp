@@ -5,26 +5,38 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<form method="post" action="/user/testObject">
+<form method="post" action="/user/testListAndMap">
     <table align="center">
         <tr>
+            <td>用户名</td>
+            <td><input type="text" name="userInfos[0].username"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="userInfos[1].password"></td>
+        </tr>
+        <tr>
             <td>姓名</td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" name="userMap['user1'].name"></td>
         </tr>
         <tr>
             <td>年龄</td>
-            <td><input type="text" name="age"></td>
+            <td><input type="text" name="userMap['user1'].age"></td>
         </tr>
         <tr>
             <td>性别</td>
             <td>
-                <input type="radio" name="gender" value="男"> 男
-                <input type="radio" name="gender" value="女" checked> 女
+                <input type="radio" name="userMap['user2'].gender" value="男"> 男
+                <input type="radio" name="userMap['user2'].gender" value="女" checked> 女
             </td>
         </tr>
         <tr>
+            <td>日期</td>
+            <td><input type="date" name="userMap['user2'].birthday"></td>
+        </tr>
+        <tr>
             <td>信息</td>
-            <td><input type="text" name="info"></td>
+            <td><input type="text" name="userMap['user1'].info"></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
