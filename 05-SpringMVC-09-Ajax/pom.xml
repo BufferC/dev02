@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.fc</groupId>
-    <artifactId>05-SpringMVC-08-Annotation</artifactId>
+    <artifactId>05-SpringMVC-09-Ajax</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>05-SpringMVC-08-Annotation</name>
+    <name>05-SpringMVC-09-Ajax</name>
     <packaging>war</packaging>
 
     <properties>
