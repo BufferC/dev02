@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--扫描指定包下的注解-->
+    <context:component-scan base-package="com.fc"/>
+
+    <mvc:default-servlet-handler/>
+
+    <mvc:annotation-driven/>
+
+    <!--文件解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         <!--自大上传的文件大小（总有文件的总大小）-->
+        <property name="maxUploadSize" value="5000000000000"/>
+        <!--编码集-->
+        <property name="defaultEncoding" value="defaultEncoding"/>
+        <!--单个文件的大小-->
+        <property name="maxUploadSizePerFile" value="200000"/>
+        <!--缓存-->
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+
+</beans>
