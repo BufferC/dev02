@@ -17,7 +17,7 @@ public class FileController {
     @RequestMapping("upload")
     public ModelAndView upload(MultipartFile upload, ModelAndView mv) {
         // 准备路径
-        String path = "http://localhost:8081/upload/";
+        String path = "http://localhost:8080/Shares/images/";
 
         // 获取文件名
         String filename = upload.getOriginalFilename();
@@ -44,7 +44,7 @@ public class FileController {
             e.printStackTrace();
         }
 
-        mv.addObject("img", "http://localhost:8081/upload/" + filename);
+        mv.addObject("img", path + filename);
 
         mv.setViewName("/success.jsp");
 
