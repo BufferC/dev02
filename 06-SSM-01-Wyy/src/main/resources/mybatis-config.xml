@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--MyBatis配置-->
 <configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J2"/>
+    </settings>
+
     <!--映射文件-->
     <mappers>
         <mapper resource="com/fc/mapper/TbMusicMapper.xml"/>
