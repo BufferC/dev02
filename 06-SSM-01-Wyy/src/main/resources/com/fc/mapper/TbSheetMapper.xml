@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fc.dao.TbSheetMapper">
+  <select id="findSongsBySheet" resultType="com.fc.entity.TbMusic">
+    select tm.* from tb_sheet ts
+    join tb_music tm on ts.id = tm.sheet_id
+    where ts.sheet_name = #{sheetName}
+  </select>
   <resultMap id="BaseResultMap" type="com.fc.entity.TbSheet">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="sheet_name" jdbcType="VARCHAR" property="sheetName" />
