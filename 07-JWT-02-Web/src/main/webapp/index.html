@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功页</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    <h1 align="center" style="color: yellowgreen">欢迎<span id="username"></span>登录成功</h1>
+</body>
+<script type="application/javascript">
+    // 每次刷新主页的时候，都需要判断是否登录过，如果没有登录过就去登录
+    $(function () {
+        // 判断token是否存在
+        var token = localStorage.getItem("token");
+
+        if (token === null) {
+            alert("当前token不存在或者已过期，请重新登录");
+            $(location).attr('href', "/login.html");
+        } else {
+            $.ajax({
+                type: "post",
+                url: "/user/verify",
+                data: {"token": token},
+                success: function (resp) {
+                    if (!resp.success) {
+                        alert(resp.message);
+                        $(location).attr('href', "/login.html");
+                    } else {
+                        // 登录成功
+                        $("#username").text(resp.data.username);
+                    }
+                }
+            })
+        }
+    })
+</script>
+</html>
