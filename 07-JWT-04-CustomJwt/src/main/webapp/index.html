@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>成功页</title>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    <button type="button" onclick="show()">查看学生成绩</button>
+    <button type="button" onclick="modify()">修改学生成绩</button>
+</body>
+<script type="application/javascript">
+    var token = localStorage.getItem("token");
+
+    if (token === null) {
+        alert("token失效，请重新登录");
+        $(location).attr('href', '/login.html');
+    } else {
+        function show() {
+            $.ajax({
+                url: "/user/show",
+                type: "get",
+                data: {"token": token},
+                success: function (resp) {
+                    alert(JSON.stringify(resp));
+                }
+            })
+        }
+
+        function modify() {
+            $.ajax({
+                url: "/user/modify",
+                type: "get",
+                data: {"token": token},
+                success: function (resp) {
+                    alert(JSON.stringify(resp));
+                }
+            })
+        }
+    }
+</script>
+</html>
