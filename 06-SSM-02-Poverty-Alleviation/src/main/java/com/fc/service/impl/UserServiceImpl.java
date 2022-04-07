@@ -10,8 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -74,5 +73,57 @@ public class UserServiceImpl implements UserService {
         }
 
         return resultVO;
+    }
+
+    @Override
+    public ResultVO add(User user) {
+        ResultVO vo;
+        // 判断是否存在创建时间，没有就自己加上
+        if (user.getCreateTime() == null) {
+            user.setCreateTime(new Date());
+        }
+
+        int affectedRows = userMapper.insertSelective(user);
+
+        if (affectedRows > 0) {
+            vo = new ResultVO(1000, "添加用户成功！！", true, user);
+        } else {
+            vo = new ResultVO(5000, "添加用户失败！！", false, null);
+        }
+
+        return vo;
+    }
+
+    @Override
+    public ResultVO update(User user) {
+        int affectedRows = userMapper.updateByPrimaryKeySelective(user);
+
+        ResultVO vo;
+
+        if (affectedRows > 0) {
+            // 修改完成之后，再重新查询一次，保证返回给前端的是最新最全的数据
+            user = userMapper.selectByPrimaryKey(user.getId());
+
+            vo = new ResultVO(1000, "修改用户成功！！", true, user);
+        } else {
+            vo = new ResultVO(5000, "修改用户失败！！", false, null);
+        }
+
+        return vo;
+    }
+
+    @Override
+    public ResultVO delete(Long id) {
+        int affectedRows = userMapper.deleteByPrimaryKey(id);
+
+        ResultVO vo;
+
+        if (affectedRows > 0) {
+            vo = new ResultVO(1000, "删除用户成功！！", true, null);
+        } else {
+            vo = new ResultVO(5000, "删除用户失败！！", false, null);
+        }
+
+        return vo;
     }
 }
