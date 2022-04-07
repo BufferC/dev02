@@ -104,7 +104,7 @@
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
       #{available,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.fc.entity.Carousel">
+  <insert id="insertSelective" keyProperty="id" useGeneratedKeys="true" parameterType="com.fc.entity.Carousel">
     insert into carousel
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
