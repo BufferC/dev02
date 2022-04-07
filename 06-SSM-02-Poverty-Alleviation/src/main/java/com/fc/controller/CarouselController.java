@@ -12,6 +12,11 @@ public class CarouselController {
     @Autowired
     private CarouselService carouselService;
 
+    @PostMapping("state")
+    public ResultVO changeStatus(@RequestParam Integer id) {
+        return carouselService.changeStatus(id);
+    }
+
     @GetMapping("getlist")
     public ResultVO getlist(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                             @RequestParam(value = "pageSize", defaultValue = "3")  Integer pageSize,

@@ -2,8 +2,9 @@ package com.fc.dao;
 
 import com.fc.entity.Carousel;
 import com.fc.entity.CarouselExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CarouselMapper {
     long countByExample(CarouselExample example);
@@ -27,4 +28,7 @@ public interface CarouselMapper {
     int updateByPrimaryKeySelective(Carousel record);
 
     int updateByPrimaryKey(Carousel record);
+
+    // 更改轮播图是否可用的状态
+    Integer changeStatus(@Param("id") Integer id);
 }

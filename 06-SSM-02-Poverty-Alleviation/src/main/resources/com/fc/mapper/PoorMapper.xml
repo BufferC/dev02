@@ -84,7 +84,7 @@
     last_click_time, click_num
   </sql>
   <sql id="Blob_Column_List">
-    condition, introduce, reply
+    `condition`, introduce, reply
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="com.fc.entity.PoorExample" resultMap="ResultMapWithBLOBs">
     select
