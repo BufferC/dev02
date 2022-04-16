@@ -12,7 +12,7 @@ public class CarouselController {
     @Autowired
     private CarouselService carouselService;
 
-    @PostMapping("state")
+    @GetMapping("state")
     public ResultVO changeStatus(@RequestParam Integer id) {
         return carouselService.changeStatus(id);
     }
