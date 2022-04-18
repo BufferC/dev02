@@ -1,0 +1,10 @@
+server:
+  port: 8848
+  servlet:
+    context-path: /yml
+
+student:
+  name: "易烊千玺"
+  age: 22
+  gender: true
+  birthday: 2000/12/2 12:12:12
