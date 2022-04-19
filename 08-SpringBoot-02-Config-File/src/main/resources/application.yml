@@ -4,7 +4,24 @@ server:
     context-path: /yml
 
 student:
-  name: "易烊千玺"
-  age: 22
-  gender: true
-  birthday: 2000/12/2 12:12:12
+  name: "易烊\r\n千玺"                  # 字符串
+  age: 22                          # 数值
+  gender: '男\r\n'                      # 字符串
+  married: false                    # 布尔
+  birthday: 2000/12/2 12:12:12      # 日期
+  info: 爱の约定     # 信息
+  hobby: ["唱", "跳", "Rap", "篮球"]  # 数组
+  food:                               # 集合
+    - 豆腐包子
+    - 豆沙包
+    - 土豆饼
+    - 米线
+    - 小笼包
+    - 粥
+  score: {"Java": 100, "MySQL": 5, "Html": 110}    # Map
+  car:                                  # 对象
+    brand: BYD
+    color: 白
+
+person:
+  username: "玛卡巴卡"

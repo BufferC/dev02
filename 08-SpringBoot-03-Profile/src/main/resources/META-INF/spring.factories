@@ -1,0 +1,2 @@
+# 启用自定义的环境配置类
+org.springframework.boot.env.EnvironmentPostProcessor=com.fc.config.CustomEnvironmentPostProcessor

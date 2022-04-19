@@ -1,0 +1,9 @@
+# 开发环境配置
+server:
+  port: 8080
+  servlet:
+    context-path: /dev
+
+student:
+  name: 迪丽热巴
+  age: 30
