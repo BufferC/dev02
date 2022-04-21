@@ -2,6 +2,7 @@ package com.fc;
 
 import com.fc.config.TestConfig;
 import com.fc.entity.Car;
+import com.fc.entity.Cat;
 import com.fc.entity.Person;
 import com.fc.entity.User;
 import org.springframework.boot.SpringApplication;
@@ -55,6 +56,12 @@ public class Application {
         Car carCar = applicationContext.getBean("car2", Car.class);
 
         System.out.println(carCar);
+
+        System.out.println("--------------");
+
+        Cat cat = applicationContext.getBean("com.fc.entity.Cat", Cat.class);
+
+        System.out.println("从容器中拿到的猫：" + cat);
     }
 
 }
