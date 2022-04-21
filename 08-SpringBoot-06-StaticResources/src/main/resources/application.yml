@@ -3,6 +3,6 @@ spring:
   web:
     resources:
       static-locations: classpath:/hi/
-  # 静态资源的路径访问前缀，相当于mapping
-  mvc:
-    static-path-pattern: /hello/**
+  # 静态资源的路径访问+前缀，相当于mapping
+#  mvc:
+#    static-path-pattern: /hello/**
