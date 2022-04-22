@@ -1,0 +1,38 @@
+# 配置数据源
+spring:
+  main:
+    # 允许循环依赖
+    allow-circular-references: true
+  datasource:
+    # 使用默认的Hikari数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dev02?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimeZone=GTM+8
+    username: root
+    password: root
+
+# MyBatis配置
+mybatis:
+  # mybatis配置文件的路径
+  # config-location:
+  mapper-locations: com/fc/mapper/*.xml
+  type-aliases-package: com.fc.entity
+  configuration:
+    # 二级缓存
+    cache-enabled: true
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 主键回填
+    use-generated-keys: true
+    # 懒加载
+    lazy-loading-enabled: true
+    # 积极加载
+    aggressive-lazy-loading: false
+    # 驼峰命名
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  # 分页合理化
+  reasonable: true
+  # 自动识别方言
+  auto-dialect: true
