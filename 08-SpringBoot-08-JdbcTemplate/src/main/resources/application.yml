@@ -1,0 +1,9 @@
+# 配置数据源
+spring:
+  datasource:
+    # 使用默认的Hikari数据源
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dev02?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimeZone=GTM+8
+    username: root
+    password: root
