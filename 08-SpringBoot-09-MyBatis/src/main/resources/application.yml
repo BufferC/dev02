@@ -1,8 +1,8 @@
 # 配置数据源
 spring:
-  main:
-    # 允许循环依赖
-    allow-circular-references: true
+#  main:
+#    # 允许循环依赖
+#    allow-circular-references: true
   datasource:
     # 使用默认的Hikari数据源
     type: com.alibaba.druid.pool.DruidDataSource
