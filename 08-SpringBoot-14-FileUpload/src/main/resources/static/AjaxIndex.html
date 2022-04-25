@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax上传</title>
+    <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <form id="form">
+        头像：<input type="file" name="headerImg">
+        图片：<input type="file" name="photo" multiple>
+        提交：<button onclick="upload()" type="button">上传</button>
+    </form>
+
+    <img id="headerImg" src="">
+</body>
+<script>
+    function upload() {
+        var data = new FormData(document.getElementById("form"))
+
+        $.ajax({
+            url: "/fileUpload/json",
+            type: "POST",
+            data: data,
+            // 这两个参数必须写
+            contentType: false,
+            processData: false,
+            success: function (resp) {
+                alert(resp.message);
+                var imgPath = resp.data;
+
+                for (let i = 0; i < imgPath.size; i++) {
+                    alert(imgPath[i]);
+                }
+
+                $("#headerImg").attr('src', imgPath[0])
+            }
+        })
+    }
+</script>
+</html>
