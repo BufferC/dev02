@@ -15,6 +15,14 @@
 
     <mvc:annotation-driven/>
 
+    <!--配置跨域拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.fc.interceptor.CrossInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!--跨域配置-->
     <!--<mvc:cors>-->
     <!--    <mvc:mapping allowed-origins="*" path="/crossOrigin/*"/>-->

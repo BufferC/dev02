@@ -7,6 +7,11 @@ spring:
     url: jdbc:mysql://localhost:3306/dev02?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimeZone=GTM+8
     username: root
     password: root
+  mvc:
+    hiddenmethod:
+      filter:
+        # 开启隐藏方法过滤器，默认是false
+        enabled: true
 
 # MyBatis配置
 mybatis:
