@@ -10,4 +10,6 @@ public class LoginVO {
     private String password;
     private String login;
     private String rememberMe;
+    private String usernameInput;
+    private String passwordInput;
 }

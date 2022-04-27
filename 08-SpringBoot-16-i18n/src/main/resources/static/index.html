@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+    <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <p align="center" id="welcome" class="text-primary bg-danger">...</p>
+            <div class="form-group">
+                <label id="username" for="usernameInput">Username</label>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <input id="usernameInput" type="text" class="form-control" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label id="password" for="passwordInput">Password</label>
+                <input id="passwordInput" type="password" class="form-control" placeholder="Password">
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> <span id="rememberMe">Remember Me</span>
+                </label>
+            </div>
+            <div class="btn-group">
+                <button id="login" type="submit" class="btn btn-success">Login</button>
+                <button onclick="changeLang()" id="changeButton" type="button" class="btn btn-info">切换语言</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    var lang = 'en_US';
+
+    $(function () {
+        changeLang()
+    })
+
+    // 切换语言的逻辑
+    function changeLang() {
+        if (lang === 'en_US') {
+            lang = 'zh_CN';
+            $("#changeButton").text('English')
+        } else {
+            lang = 'en_US';
+            $("#changeButton").text('中文')
+        }
+
+        $.ajax({
+            url: "i18n/get",
+            type: "get",
+            data: {"lang": lang},
+            success: function (resp) {
+                $("#rememberMe").text(resp.rememberMe);
+                $("#username").text(resp.username);
+                $("#usernameInput").attr('placeholder', resp.usernameInput)
+                $("#password").text(resp.password);
+                $("#passwordInput").attr('placeholder', resp.passwordInput)
+                $("#title").text(resp.title);
+                $("#welcome").text(resp.welcome);
+                $("#login").text(resp.login);
+            }
+        })
+    }
+</script>
+</html>
