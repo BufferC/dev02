@@ -1,0 +1,11 @@
+spring:
+  devtools:
+    restart:
+      # 开启自动重启
+      enabled: true
+      # 轮询间隔：devtools会在指定的轮询间隔内扫描当前项目是否做了修改
+      # 默认是1s
+      poll-interval: 2s
+      # 静默时间，在重启之前，会进行检查，如果指定
+      # 静默时间内没有做任何修改，就会重启
+      quiet-period: 1s

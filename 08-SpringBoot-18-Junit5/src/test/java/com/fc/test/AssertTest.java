@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.Duration;
 
+// 断言失败后，后面的代码还能执行吗？
 @DisplayName("断言测试类")
 @SpringBootTest
 public class AssertTest {
@@ -25,7 +26,9 @@ public class AssertTest {
     @Test
     @DisplayName("简单断言是否是相同的")
     void testAssertEquals() {
-        Assertions.assertEquals(4, add(1, 2), "这都能算错？");
+        Assertions.assertEquals(3, add(1, 2), "这都能算错？");
+
+        System.out.println("你真帅");
     }
 
     @Test
