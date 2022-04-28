@@ -5,7 +5,7 @@ spring:
     # 邮件发送人的账号
     username: 2937753364@qq.com
     # 邮件服务的第三方授权码，不是QQ密码
-    password: yfysrhcsguqydfjh
+    password: xxxxxxxxxxxxxxxx
     default-encoding: UTF-8
     port: 587
     properties:
