@@ -1,0 +1,20 @@
+spring:
+  mail:
+    # 邮件发送服务器地址
+    host: smtp.qq.com
+    # 邮件发送人的账号
+    username: 2937753364@qq.com
+    # 邮件服务的第三方授权码，不是QQ密码
+    password: yfysrhcsguqydfjh
+    default-encoding: UTF-8
+    port: 587
+    properties:
+      mail:
+        debug: true
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 所含有的文件大小
+      max-request-size: 100MB
+      enabled: true
