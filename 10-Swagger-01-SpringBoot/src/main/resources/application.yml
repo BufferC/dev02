@@ -1,0 +1,6 @@
+spring:
+  mvc:
+    pathmatch:
+      # springboot2.6.X用的是PATH_PATTERN_PARSER
+      # 但是swagger用的是ant_path_matcher
+      matching-strategy: ant_path_matcher
