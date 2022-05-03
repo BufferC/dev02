@@ -51,7 +51,7 @@ public class UserController {
 
             response.addCookie(cookie);
 
-            mv.setViewName("forward:/index.jsp");
+            mv.setViewName("forward:/index/page");
         }
 
         return mv;

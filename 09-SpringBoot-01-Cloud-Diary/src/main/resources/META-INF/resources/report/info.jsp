@@ -30,7 +30,7 @@
  --%>
 <script type="text/javascript" src="/statics/echarts/echarts.min.js"></script>
 <%-- 引用百度地图API文件，需要申请百度地图对应ak密钥--%>
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=yrxymYTyuefnxNtXbZcMU8phABXtu6TG"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=QCEYaV9kgCx5xMfBiVMl7aoEQ3Vr6d5M"></script>
 <script type="text/javascript">
 
     /**
@@ -185,7 +185,7 @@
         // 加载地图实例
         var map = new BMapGL.Map("baiduMap");
         // 设置地图的中心点
-        var point = new BMapGL.Point(116.404, 39.915);
+        var point = new BMapGL.Point(113.458369, 34.772785);
         // 地图初始化，BMapGL.Map.centerAndZoom()方法要求设置中心点坐标和地图级别
         map.centerAndZoom(point, 10);
         // 开启鼠标滚轮缩放
