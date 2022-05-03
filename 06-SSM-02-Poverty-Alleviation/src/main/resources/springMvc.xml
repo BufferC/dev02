@@ -15,10 +15,22 @@
 
     <mvc:annotation-driven/>
 
-    <!--跨域-->
-    <mvc:cors>
-        <mvc:mapping path="/**" allowed-origins="*"/>
-    </mvc:cors>
+
+
+    <mvc:interceptors>
+        <!--跨域拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.fc.interceptor.CrossInterceptor"/>
+        </mvc:interceptor>
+        <!--jwt验证拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!--登录不需要验证-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="com.fc.interceptor.JwtInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!--导入业务层配置文件-->
     <import resource="classpath:applicationContext.xml"/>
