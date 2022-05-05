@@ -15,7 +15,8 @@
 
     <mvc:annotation-driven/>
 
-
+    <!--swagger是静态资源，springmvc默认不支持静态资源放行的。所以必须加这个配置-->
+    <mvc:default-servlet-handler/>
 
     <mvc:interceptors>
         <!--跨域拦截器-->
@@ -28,6 +29,11 @@
             <mvc:mapping path="/**"/>
             <!--登录不需要验证-->
             <mvc:exclude-mapping path="/user/login"/>
+            <!--swagger相关的内容，必须进行放行-->
+            <mvc:exclude-mapping path="/swagger-ui.html/**"/>
+            <mvc:exclude-mapping path="/v2/**"/>
+            <mvc:exclude-mapping path="/webjars/**"/>
+            <mvc:exclude-mapping path="/swagger-resources/**"/>
             <bean class="com.fc.interceptor.JwtInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
