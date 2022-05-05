@@ -46,4 +46,7 @@ public interface TbNoteMapper {
 
     // 根据用户id获取分类的类别
     List<NoteVO> findCountByType(Integer userId);
+
+    // 根据id获取对应的日记对象
+    NoteVO findById(Integer id);
 }

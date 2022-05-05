@@ -11,4 +11,6 @@ public class NoteVO extends TbNote {
     private Integer typeId;
     private String groupName;
     private Integer noteCount;
+    // 查看某一个日记的详情
+    private String typeName;
 }

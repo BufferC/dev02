@@ -69,7 +69,6 @@
                                                        value="${noteInfo.title}">
                                             </c:otherwise>
                                         </c:choose>
-
                                     </div>
                                 </div>
 

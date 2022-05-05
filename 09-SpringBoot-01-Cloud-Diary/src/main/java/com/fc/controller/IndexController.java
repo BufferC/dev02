@@ -34,11 +34,11 @@ public class IndexController {
 
         // 获取日期分类
         List<NoteVO> dateInfo = indexService.findCountByDate(user.getId());
-        mv.addObject("dateInfo", dateInfo);
+        session.setAttribute("dateInfo", dateInfo);
 
         // 获取类别分类
         List<NoteVO> typeInfo = indexService.findCountByType(user.getId());
-        mv.addObject("typeInfo", typeInfo);
+        session.setAttribute("typeInfo", typeInfo);
 
         if (id != null) {
             mv.addObject("typeId", id);

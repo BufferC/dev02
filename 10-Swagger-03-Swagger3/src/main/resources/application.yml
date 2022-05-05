@@ -1,0 +1,15 @@
+spring:
+  mvc:
+    pathmatch:
+      # 路径匹配方式
+      matching-strategy: ant_path_matcher
+
+springfox:
+  documentation:
+    # swagger3.0协议使用的就是open-api
+    open-api:
+      enabled: true
+    enabled: true
+    swagger-ui:
+      enabled: true
+      base-url: ""
