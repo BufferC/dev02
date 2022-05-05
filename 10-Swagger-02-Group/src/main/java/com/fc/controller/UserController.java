@@ -1,5 +1,6 @@
 package com.fc.controller;
 
+import com.fc.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,6 +14,12 @@ public class UserController {
     @GetMapping("findAll")
     public String findAll() {
         return "user findAll";
+    }
+
+    @ApiOperation(value = "获取用户", tags = "select")
+    @GetMapping("getUser")
+    public User getUser() {
+        return new User(1, "易烊千玺", "123456");
     }
 
     @ApiOperation(value = "根据id查询对应的用户", tags = "select")
