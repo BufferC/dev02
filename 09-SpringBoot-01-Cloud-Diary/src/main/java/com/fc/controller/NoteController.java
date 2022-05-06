@@ -1,15 +1,15 @@
 package com.fc.controller;
 
+import com.fc.entity.TbNote;
 import com.fc.entity.TbNoteType;
 import com.fc.entity.TbUser;
 import com.fc.service.NoteService;
 import com.fc.service.TypeService;
 import com.fc.vo.NoteVO;
+import com.fc.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -62,5 +62,37 @@ public class NoteController {
         mv.setViewName("forward:/index.jsp");
 
         return mv;
+    }
+
+    @PostMapping("addOrUpdate")
+    public ModelAndView addOrUpdate(ModelAndView mv, TbNote note) {
+        ResultVO vo;
+
+        // 如果传递了日记的id，那么执行修改操作，否则就去添加
+        if (note.getId() != null) {
+            vo = noteService.update(note);
+        } else {
+            vo = noteService.add(note);
+        }
+
+        // 添加或者修改成功的情况
+        if (vo.getCode() == 1) {
+            mv.setViewName("redirect:/index/page");
+        } else {
+            mv.addObject("id", note.getId());
+            mv.addObject("resultInfo", vo.getData());
+
+            mv.setViewName("forward:view");
+        }
+
+        mv.addObject("menu_page", "note");
+
+        return mv;
+    }
+
+    @GetMapping("delete")
+    @ResponseBody
+    public ResultVO delete(@RequestParam Integer id) {
+        return noteService.delete(id);
     }
 }

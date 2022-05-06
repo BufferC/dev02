@@ -1,5 +1,12 @@
 # 配置数据源
 spring:
+  servlet:
+    # 文件上传相关配置
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+      enabled: true
+
   datasource:
     # 使用默认的Hikari数据源
     type: com.alibaba.druid.pool.DruidDataSource
