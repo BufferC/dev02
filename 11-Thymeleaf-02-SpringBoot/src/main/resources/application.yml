@@ -1,0 +1,9 @@
+spring:
+  thymeleaf:
+    # Thymeleaf的缓存。默认是true
+    # 如果设置为false，就能开启热部署
+    # 每次修改模板都不需要重启服务器，会自动刷新
+    # 和jsp效果差不多
+    # 改Controller中的内容不会受到影响，还是需要重启服务器
+    # 或者配置devtools也行
+    cache: false
