@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试链接表达式</title>
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+</head>
+<body>
+    <a th:href="@{url}">测试当前路径</a>
+    <br/>
+    <a th:href="@{/url}">测试绝对路径</a>
+    <br/>
+    <a th:href="@{./url}">测试相对于当前路径</a>
+    <br/>
+    <a th:href="@{../url}">测试上级路径</a>
+    <br/>
+    <a th:href="@{https://www.baidu.com}">测试外部绝对路径</a>
+    <br/>
+
+    <hr/>
+
+    <a href="url">测试当前路径</a>
+    <br/>
+    <a href="/url">测试绝对路径</a>
+    <br/>
+    <a href="./url">测试相对于当前路径</a>
+    <br/>
+    <a href="../url">测试上级路径</a>
+    <br/>
+    <a href="https://www.baidu.com">测试外部绝对路径</a>
+    <br/>
+</body>
+</html>

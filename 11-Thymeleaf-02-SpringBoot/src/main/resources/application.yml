@@ -7,3 +7,19 @@ spring:
     # 改Controller中的内容不会受到影响，还是需要重启服务器
     # 或者配置devtools也行
     cache: false
+    # 配置访问路径的前缀和后缀
+    prefix: "classpath:/templates/"
+    suffix: ".html"
+    # 开启thymeleaf【默认就是true】
+    enabled: true
+    # 编码集
+    encoding: UTF-8
+    # 使用html作为模板
+    mode: "HTML"
+    # 检查模板位置是否存在
+    check-template-location: true
+    # 解析器的顺序
+    template-resolver-order: 1
+    # 视图解析的名称以及排除的名称
+#    view-names:
+#    excluded-view-names:

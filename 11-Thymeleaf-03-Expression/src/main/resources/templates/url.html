@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试链接表达式传递参数</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <th>编号</th>
+            <th>账号</th>
+            <th>密码</th>
+        </tr>
+        <tr>
+            <th><p th:text="${account.id}"></p></th>
+            <th><p th:text="${account.username}"></p></th>
+            <th><p th:text="${account.password}"></p></th>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <a th:href="@{noParam}">测试不带参数进行传递</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <a th:href="@{getParam?id=1&username='易烊千玺'&password=123456}">测试携带参数进行传递</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <a th:href="@{getParam(id=1, username='易烊千玺', password='123456')}">使用thymeleaf的方式来传递参数</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <a th:href="@{getParam(id=${account.id}, username=${account.username}, password=${account.password})}">使用thymeleaf的方式结合${}来传递参数</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <a th:href="@{'testRESTful/' + ${account.id} + '/' + ${account.username} + '/' + ${account.password}}">RESTful</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
