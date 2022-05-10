@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试null字面量</title>
+</head>
+<body>
+    <h1 id="h1" th:text="null">null字面量将不会显示内容到页面上，但是标签还在</h1>
+    <h1 th:text="${value}">value：不显示</h1>
+    <!--这点是比较好的，省去了我们做非空判断以及非空字符串的判断-->
+    <h1 th:text="${string}">空字符也不会显示</h1>
+
+    <h1 th:if="${value} eq null">会显示√</h1>
+    <h1 th:if="${string} eq ('')">会显示√</h1>
+    <h1 th:if="${string} eq ''">会显示√</h1>
+
+    <!--null和空字符串实际上是能判断出来的，只不过thymeleaf优化了一下
+    看起来都不显示，但其实还能分别出来的-->
+    <h1 th:if="${value} eq ''">会显示？</h1>
+</body>
+</html>

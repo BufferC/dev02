@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试文本字面量</title>
+</head>
+<body>
+    <!--注意，如果使用了多个文本字面量，将会...-->
+    <!--注意，如果文本字面量中使用了空格，一定要记得用单引号给引起来，不然会报错的-->
+    <h1 th:text="'烤羊排 烤韭菜 烤面筋 烤土豆'"></h1>
+    <h1 th:text="'你好' + '世界'"></h1>
+    <h1 th:text="'欢迎' + ${name} + '登录成功'">我们可以使用字面量和变量表达式相配合的方式来书写</h1>
+    <h1 th:text="|欢迎 ${name}${info}|">更加优雅，而且能够使用空格了</h1>
+</body>
+</html>

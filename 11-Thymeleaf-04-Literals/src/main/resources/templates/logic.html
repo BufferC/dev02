@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试逻辑字面量</title>
+</head>
+<body>
+    <h1 th:if="null">null 不显示</h1>
+    <h1 th:if="not null">not null显示</h1>
+    <h1 th:if="not (null)">not (null)显示</h1>
+    <h1 th:if="!null">!null显示</h1>
+    <h1 th:if="${value}">${value}不显示</h1>
+    <h1 th:if="not ${value}">not ${value}显示</h1>
+    <h1 th:if="!${value}">!${value}显示</h1>
+    <h1 th:if="${num} > 0 and ${num} le 30">大于0并且小于等于30，显示</h1>
+    <h1 th:if="${num} < 0 or ${num} ge 20">小于0小于或者等于20，显示</h1>
+</body>
+</html>

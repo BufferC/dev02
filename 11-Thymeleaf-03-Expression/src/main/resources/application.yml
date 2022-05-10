@@ -1,3 +1,8 @@
 spring:
   thymeleaf:
     cache: false
+  messages:
+    # 消息字典的路径（核心配置文件的所在路径）
+    basename: messages/messages
+    # 编码集
+    encoding: UTF-8

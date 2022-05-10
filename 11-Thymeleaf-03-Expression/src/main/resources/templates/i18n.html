@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title}"></title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form>
+        <p align="center" th:text="#{welcome}" class="text-primary bg-danger">...</p>
+        <div class="form-group">
+            <label th:text="#{username}" for="usernameInput">Username</label>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <input id="usernameInput" type="text" class="form-control" th:placeholder="#{username_placeholder}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label th:text="#{password}" for="passwordInput">Password</label>
+            <input id="passwordInput" type="password" class="form-control" th:placeholder="#{password_placeholder}">
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> <span th:text="#{rememberMe}">Remember Me</span>
+            </label>
+        </div>
+        <div class="btn-group">
+            <button th:text="#{login}" type="submit" class="btn btn-success">Login</button>
+            <a href="/i18n?lang=zh_CN">中文</a>
+            <a href="/i18n?lang=en_US">English</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试三元运算</title>
+</head>
+<body>
+    <p th:text="${name} eq '易烊千玺'">能显示：true</p>
+    <p th:if="${name} eq '易烊千玺'">能显示</p>
+
+    <!--三目运算符，第一个是条件，第二个是条件是true时执行
+    第三个是条件为false时执行-->
+    <p th:text="${name} eq '易烊千玺' ? '易烊千玺' : '彭于晏'"></p>
+    <p th:text="${name} eq '易烊千玺' ? (${age} gt 20 ? '不年轻了' : '很年轻') : '我是彭于晏'"></p>
+
+    <!--之前用jstl的时候必须要写两次判断才行，现在只需要写一个就行了-->
+    <p th:text="${!gender} ? '男' : '女'"></p>
+</body>
+</html>

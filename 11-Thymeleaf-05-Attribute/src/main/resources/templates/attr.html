@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:attr</title>
+</head>
+<body>
+<!--th:attr可以给当前标签添加一些属性以及对应的值-->
+<form th:attr="action=${action}, method=${method}">
+    姓名：<input type="text" th:name="name" >
+    年龄：<input type="text" th:name="age">
+    信息：<input type="text" th:name="info">
+    <input type="submit" value="修改用户">
+    <button th:attr="onclick='fun(\'' +  ${text} + '\')'" type="button">点我一下</button>
+</form>
+</body>
+<script>
+    function fun(text) {
+        alert(text)
+    }
+</script>
+</html>

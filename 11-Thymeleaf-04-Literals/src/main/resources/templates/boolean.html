@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试布尔值字面量</title>
+</head>
+<body>
+    <!--th:if就是做一个判断，类似我们jstl中的c:if标签-->
+    <!--th:if中就是一个boolean值-->
+    <!--只有th:if='true'时才能正常显示。否则连带着标签全都没了-->
+    <h1 th:if="true">true就能显示</h1>
+    <h1 th:if="false">false就不显示</h1>
+    <h1 th:if="${boolean}">变量表达式为true</h1>
+    <!--没有name的时候才能显示-->
+    <h1 th:if="not ${name}">请重新登录</h1>
+    <h1 th:if="${age} eq 22">年龄等于22岁：eq</h1>
+    <h1 th:if="${age} == 22">年龄等于22岁：==</h1>
+    <h1 th:if="${age} gt 20">年龄大于20岁：gt</h1>
+    <h1 th:if="${age} lt 30">年龄小于30岁：lt</h1>
+    <h1 th:if="${age} &gt; 20">年龄大于20岁：&gt;</h1>
+    <h1 th:if="${age} &lt; 30">年龄小于30岁：&lt;</h1>
+
+    <h1 th:if="${boolean} and ${age} ge 20">boolean为true并且年龄大于等于20岁</h1>
+    <h1 th:if="${boolean} or ${age} le 20">boolean为true或者年龄小于等于20岁</h1>
+    <h1 th:if="${age} neq 20">年龄不等于20岁</h1>
+    <!--应用-->
+    <h1 th:if="${notes} eq null or ${notes.size} == 0">当前日记数量为空</h1>
+    <h1 th:if="${notes} neq null and ${notes.size} gt 0">
+        日记的内容....
+    </h1>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:action</title>
+</head>
+<body>
+    <!--readonly只读还能进行参数的传递，如果是disabled就无法传递参数了-->
+    <!--th:action可以获取动态的参数并且配合链接表达式进行参数的传递-->
+    <form th:action="@{update(id=${user.id})}" th:method="post">
+        ID：<input hidden type="text" th:name="id" th:value="${user.id}">
+        姓名：<input type="text" th:name="name" th:value="${user.name}">
+        年龄：<input type="text" th:name="age" th:value="${user.age}">
+        信息：<input type="text" th:name="info" th:value="${user.info}">
+        <input type="submit" value="修改用户">
+    </form>
+    <button th:onclick="test()" type="button">弹窗</button>
+</body>
+<script type="text/javascript">
+    function test() {
+        alert('弹窗')
+    }
+</script>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试算术字面量</title>
+</head>
+<body>
+    <h1 th:text="100"></h1>
+    <h1 th:text="${num}"></h1>
+    <h1 th:text="${num} + 100">两个数值可以直接相加</h1>
+    <h1 th:text="200 + 100">两个数值可以直接相加</h1>
+    <h1 th:text="(${num} * 10 - 1) % 10">结果：9</h1>
+    <!--在遇到字符串之前加号都是用来相加的，只要碰到了字符串，就会变成拼接-->
+    <h1 th:text="100 + ${num} + '字符串' + ${num} + 100"></h1>
+    <!--小括号的优先级最高，先执行括号里面的，再执行外面，从左到右依次执行-->
+    <h1 th:text="100 + ${num} + '字符串' + (${num} + 100)">200字符串200</h1>
+</body>
+</html>
