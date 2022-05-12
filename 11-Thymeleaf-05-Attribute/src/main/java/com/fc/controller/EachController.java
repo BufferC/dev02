@@ -22,7 +22,7 @@ public class EachController {
 
         model.addAttribute("users", users);
 
-        // 有序的hashMap
+        // 有序的hashMap，里面的元素插入的顺序和存储的顺序是一致的
         Map<String, Object> map = new LinkedHashMap<>();
 
         map.put("id", 1);

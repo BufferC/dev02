@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>参数化模板</title>
+</head>
+<body>
+    <!--th:fragment用于声明一个公共的模板片段-->
+    <!--类似方法的形参-->
+    <div th:fragment="welcome(name, address)">
+        <h1 align="center" style="color: purple" th:text="|欢迎来自${address}的${name}登录游戏...|"></h1>
+    </div>
+</body>
+</html>

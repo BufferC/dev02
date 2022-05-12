@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:with</title>
+</head>
+<body>
+    <!--可以用来声明一些可用的model参数-->
+    <!--很类似Java中声明一个局部变量-->
+    <!--相当于放到了我们的page这个作用域中（其实还要更小），只在声明的标签中或者内部可用-->
+    <div th:with="content='Hello' + ${food}">
+        <span th:text="${content}"></span>
+        <span th:text="${content}"></span>
+        <span th:text="${content}"></span>
+    </div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>信息</th>
+    </tr>
+    <tr th:with="user=${users[0]}">
+        <td th:text="${user.id}">ID</td>
+        <td th:text="${user.name}">姓名</td>
+        <td th:text="${user.age}">年龄</td>
+        <td th:text="${user.info}">信息</td>
+    </tr>
+    <tr th:with="user=${users[1]}">
+        <td th:text="${user.id}">ID</td>
+        <td th:text="${user.name}">姓名</td>
+        <td th:text="${user.age}">年龄</td>
+        <td th:text="${user.info}">信息</td>
+    </tr>
+</table>
+</body>
+</html>

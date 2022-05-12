@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:if和th:unless</title>
+</head>
+<body>
+    <p th:if="true">th:if="true"显示</p>
+    <p th:if="false">false不显示</p>
+
+    <p th:unless="true">true不显示</p>
+    <p th:unless="false">th:unless="false"显示</p>
+
+    <p th:if="3 > 2">只要条件为真，就能显示</p>
+    <p th:if="1">th:if="1"，非0为真，显示</p>
+    <p th:if="ok">th:if="ok"显示</p>
+    <p th:if="on">th:if="on"显示</p>
+    <p th:if="null">th:if="null"不显示</p>
+    <p th:if="yes">th:if="yes"显示</p>
+    <p th:unless="off">th:unless="off"显示</p>
+    <p th:unless="no">th:unless="no"显示</p>
+    <p th:unless="0">th:unless="0"显示</p>
+
+    <hr/>
+
+    <p th:if="${string1}">""能显示</p>
+    <p th:if="${string2}">null显示不了</p>
+    <p th:if="${string3}">"null"能显示</p>
+
+</body>
+</html>

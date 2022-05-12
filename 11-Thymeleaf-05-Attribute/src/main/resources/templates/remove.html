@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:remove</title>
+</head>
+<body>
+    <!--all-->
+    <div th:remove="all">
+        <h1 align="center" style="color: greenyellow">all：删除全部，包括标签和子项1</h1>
+        <h1 align="center" style="color: greenyellow">all：删除全部，包括标签和子项2</h1>
+    </div>
+
+    <!--body-->
+    <!--只要标签还在，我们就可以通过dom对其进行控制-->
+    <div id="div1" th:remove="body">
+        <h1 align="center" style="color: greenyellow">body：删除子项，标签还在</h1>
+        <h1 align="center" style="color: greenyellow">body：删除子项，标签还在</h1>
+    </div>
+
+    <!--tag-->
+    <div th:remove="tag">
+        <h1 align="center" style="color: greenyellow">tag：删除标签，子项还在</h1>
+        <h1 align="center" style="color: greenyellow">tag：删除标签，子项还在</h1>
+    </div>
+
+    <!--all-but-first-->
+    <div th:remove="all-but-first">
+        <h1 align="center" style="color: greenyellow">all-but-first：只留第一个子项，其他的子项都删</h1>
+        <h1 align="center" style="color: greenyellow">all-but-first：只留第一个子项，其他的子项都删</h1>
+    </div>
+
+    <!--none-->
+    <div th:remove="none">
+        <h1 align="center" style="color: greenyellow">none：什么也不做，全部都保留</h1>
+        <h1 align="center" style="color: greenyellow">none：什么也不做，全部都保留</h1>
+    </div>
+
+</body>
+</html>

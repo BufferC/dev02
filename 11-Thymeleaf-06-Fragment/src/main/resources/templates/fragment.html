@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:fragment属性</title>
+</head>
+<body>
+    <!--声明片段这块内容也会在页面中显示，所以一般不建议直接在页面中声明片段-->
+    <div th:fragment="current">
+        <h1 align="center">当前页面中声明片段</h1>
+    </div>
+
+    <!--我们可以使用片段表达式来引入公共的模板-->
+    <!--格式为：路径加上模板的名称-->
+    <!--这种是省略写法-->
+    <div th:insert="header.html::header"></div>
+
+    <!--使用片段表达式-->
+    <div th:insert="~{header.html::header}"></div>
+
+    <h1>main</h1>
+
+    <!--使用th:replace的方式去引用-->
+    <!--th:insert是把整个标签全部给插入进来了-->
+    <!--th:replace是把标签中的内容给插入进来了-->
+    <!--th:include是把标签中的内容给替换为模板中的内容，标签是不变的-->
+    <div th:replace="common.html::replace">123</div>
+    <div th:include="common.html::include">123</div>
+
+    <!--省略写法-->
+    <div th:insert="::current"></div>
+    <!--片段表达式的写法-->
+    <div th:insert="~{::current}"></div>
+
+    <div th:insert="~{arguments.html::welcome('易烊千玺', '王者峡谷')}"></div>
+    <div th:insert="arguments.html::welcome('迪丽热巴', '艾欧尼亚')"></div>
+
+    <!--这种是省略写法-->
+    <div th:insert="footer.html::footer"></div>
+
+    <!--使用片段表达式-->
+    <div th:insert="~{footer.html::footer}"></div>
+</body>
+</html>

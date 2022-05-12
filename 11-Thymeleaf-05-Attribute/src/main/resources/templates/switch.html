@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:switch和th:case</title>
+</head>
+<body>
+    <!--天生就禁止case穿透-->
+    <div th:switch="${score}">
+        <span th:case="100">优秀</span>
+        <span th:case="80">良好</span>
+        <span th:case="60">及格</span>
+        <span th:case="40">不及格</span>
+    </div>
+    <div th:switch="${gender}">
+        <span th:case="true">男</span>
+        <span th:case="false">女</span>
+    </div>
+
+    <div th:switch="${food}">
+        <span th:case="宫保鸡丁">宫保鸡丁</span>
+        <span th:case="麻婆豆腐">麻婆豆腐</span>
+        <span th:case="鱼香肉丝">鱼香肉丝</span>
+        <span th:case="葱爆羊肉">葱爆羊肉</span>
+        <!--类似我们switch中的default-->
+        <span th:case="*">家常菜</span>
+    </div>
+</body>
+</html>
