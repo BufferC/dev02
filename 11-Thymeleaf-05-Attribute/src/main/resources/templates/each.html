@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试th:attr</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>信息</th>
+        </tr>
+        <tr th:each="user:${users}">
+            <th th:text="${user.id}">ID</th>
+            <th th:text="${user.name}">姓名</th>
+            <th th:text="${user.age}">年龄</th>
+            <th th:text="${user.info}">信息</th>
+        </tr>
+    </table>
+
+    <hr/>
+
+    <table>
+        <tr>
+            <th>key</th>
+            <th>value</th>
+        </tr>
+        <tr th:each="entry:${map}">
+            <td th:text="${entry.key}">key</td>
+            <td th:text="${entry.value}">value</td>
+        </tr>
+    </table>
+
+    <hr/>
+
+    <table align="center">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>信息</th>
+        </tr>
+        <tr th:each="user:${userMap.values()}">
+            <th th:text="${user.id}">ID</th>
+            <th th:text="${user.name}">姓名</th>
+            <th th:text="${user.age}">年龄</th>
+            <th th:text="${user.info}">信息</th>
+        </tr>
+    </table>
+
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>信息</th>
+    </tr>
+    <table align="center" th:each="map:${maps}">
+        <tr th:each="user:${map.values()}">
+            <th th:text="${user.id}">ID</th>
+            <th th:text="${user.name}">姓名</th>
+            <th th:text="${user.age}">年龄</th>
+            <th th:text="${user.info}">信息</th>
+        </tr>
+    </table>
+
+    <ol>
+        <li th:text="${str}" th:each="str:${array}"></li>
+    </ol>
+
+    <table align="center" border="1px" cellspacing="0" cellpadding="0">
+        <caption><h1 style="color: aquamarine">测试List</h1></caption>
+        <tr>
+            <th>下标</th>
+            <th>Id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>信息</th>
+            <th>计数</th>
+            <th>当前对象</th>
+            <th>总数</th>
+            <th>是否是第一个</th>
+            <th>是否是最后一个</th>
+            <th>是否是偶数</th>
+            <th>是否是奇数</th>
+        </tr>
+        <tr th:each="user,status:${users}">
+            <td th:text="${status.index}">下标</td>
+            <td th:text="${user.id}">Id</td>
+            <td th:text="${user.name}">Id</td>
+            <td th:text="${user.age}">Id</td>
+            <td th:text="${user.info}">Id</td>
+            <td th:text="${status.count}">总数</td>
+            <td th:text="${status.current}">当前对象</td>
+            <td th:text="${status.size}">计数</td>
+            <td th:text="${status.first}">是否是第一个</td>
+            <td th:text="${status.last}">是否是最后一个</td>
+            <td th:text="${status.even}">是否是偶数</td>
+            <td th:text="${status.odd}">是否是奇数</td>
+        </tr>
+    </table>
+</body>
+</html>
