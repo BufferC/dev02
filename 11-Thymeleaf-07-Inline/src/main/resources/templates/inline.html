@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试内联表达式</title>
+</head>
+<style>
+    .[[${class}]] {
+        color: [[${color}]];
+        text-align: [[${align}]];
+    }
+</style>
+<body>
+    <!--注意，只要我们开始使用Thymeleaf，这个html页面就不是html了，而是模板
+    模板经过thymeleaf渲染之后才是我们浏览器能够识别的html-->
+    <!--thymeleaf比较好，它直接使用html作为模板了，基本没有什么学习成本-->
+    <h1 class="class1">测试css内联</h1>
+    <h1 class="class2">测试css内联</h1>
+
+    <!--其实内联表达式的可读性不是特别好，而且有时候我们不想使用内联，就冲突-->
+    <!--两种情况，第一种是原样输出-->
+    <p>[[${html}]]</p>
+    <p th:text="${html}"></p>
+    <!--能够解析html中的标签和属性-->
+    <p>[(${html})]</p>
+    <p th:utext="${html}"></p>
+
+    <!--忽略内敛表达式，就真的是原样输出了-->
+    <p th:inline="none">[[${html}]]</p>
+</body>
+<script>
+    var name = '[[${name}]]';
+    var age = '[[${age}]]';
+    var gender = '[[${gender}]]';
+
+    alert(name + ':' + age + ':' + gender);
+</script>
+</html>
