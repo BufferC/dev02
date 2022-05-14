@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试基本对象</title>
+</head>
+<body>
+    <p th:text="${attr}"></p>
+
+    <!--ctx对象可以用来获取其他的基本对象-->
+    <p th:text="${#ctx.#request.getAttribute('attr')}"></p>
+    <p th:text="${#ctx.#session.getAttribute('attr')}"></p>
+    <p th:text="${#ctx.#servletContext.getAttribute('attr')}"></p>
+
+    <p th:text="${#request.getAttribute('attr')}"></p>
+    <p th:text="${#session.getAttribute('attr')}"></p>
+    <p th:text="${#servletContext.getAttribute('attr')}"></p>
+
+    <hr/>
+
+    <!--可以获取传递的请求参数-->
+
+    <p th:text="${#request.getParameter('username')}"></p>
+    <p th:text="${#request.getParameter('password')}"></p>
+
+    请求参数是否为空
+    <p th:text="${param.isEmpty()}"></p>
+    请求参数的个数
+    <p th:text="${param.size()}"></p>
+
+    <hr/>
+
+    <p th:text="${#request.scheme + '://' +
+    #request.serverName + ':' +
+    #request.serverPort +
+    #request.contextPath +
+    #request.servletPath + '?' +
+    #request.queryString}"></p>
+
+    <hr/>
+    session的id
+    <p th:text="${#session.id}"></p>
+    <p th:text="${#dates.format(#session.getCreationTime())}"></p>
+    <p th:text="${#dates.format(#session.getLastAccessedTime())}"></p>
+    <p th:text="${#session.getMaxInactiveInterval()}"></p>
+
+    <hr/>
+    servletContext
+    <p th:text="${application.attr}"></p>
+    <p th:text="${application.size()}"></p>
+    <p th:text="${application.isEmpty()}"></p>
+</body>
+</html>

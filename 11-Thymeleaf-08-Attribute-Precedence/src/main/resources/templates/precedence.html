@@ -10,9 +10,10 @@
     <!--ul：unorder list-->
     <ol>
         <!--list item-->
-        <li th:each="user:${users}" th:text="${user.username}"></li>
+        <li th:if="false" th:each="user:${users}" th:text="${user.username}"></li>
     </ol>
 
+    <!--下拉列表框-->
     <label>
         <select>
             <option th:selected="${location.value} eq ${selected}" th:value="${location.key}" th:text="${location.value}" th:each="location:${locations}">1</option>

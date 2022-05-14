@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    cache: false
+server:
+  servlet:
+    # 整个项目的根路径
+    context-path: /dev02/
