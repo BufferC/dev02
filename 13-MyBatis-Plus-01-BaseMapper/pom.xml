@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.fc</groupId>
-    <artifactId>13-MyBatis-Plus-01-SpringBoot</artifactId>
+    <artifactId>13-MyBatis-Plus-01-BaseMapper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>13-MyBatis-Plus-01-SpringBoot</name>
-    <description>Demo project for 13-MyBatis-Plus-01-SpringBoot</description>
+    <name>13-MyBatis-Plus-01-BaseMapper</name>
+    <description>Demo project for 13-MyBatis-Plus-01-BaseMapper</description>
     <properties>
         <java.version>1.8</java.version>
         <mysql.version>5.1.49</mysql.version>

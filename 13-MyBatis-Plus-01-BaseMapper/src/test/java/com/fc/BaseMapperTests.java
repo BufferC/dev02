@@ -151,4 +151,14 @@ class BaseMapperTests {
         int affectedRows = studentDao.updateById(student);
         System.out.println(affectedRows > 0 ? "修改成功~" : "修改失败");
     }
+
+    // 测试自定义SQL
+    @Test
+    void testCustomSQL() {
+        List<Student> students = studentDao.findByAgeOnDescOrder();
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
 }

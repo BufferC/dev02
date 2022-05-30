@@ -12,3 +12,8 @@ mybatis-plus:
   configuration:
     # 开启mybatis-plus的日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 指定mapper映射文件的路径
+  # 也可以不写，默认使用的是mapper路径下的所有xml
+  mapper-locations: classpath:com/fc/mapper/**/*.xml
+  # 配置mapper映射文件中的别名所在的包
+  type-aliases-package: com.fc.entity
