@@ -1,5 +1,6 @@
 package com.fc.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -15,5 +16,6 @@ public class Student {
     private Integer age;
     private String gender;
     private Date birthday;
+    @TableField(select = false)
     private String info;
 }

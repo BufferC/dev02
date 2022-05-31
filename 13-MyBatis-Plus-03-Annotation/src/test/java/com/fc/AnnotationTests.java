@@ -20,12 +20,29 @@ class AnnotationTests {
     private StudentDao studentDao;
 
     @Test
-    void contextLoads() {
+    void testList() {
         List<Account> accounts = accountDao.selectList(null);
 
         for (Account account : accounts) {
             System.out.println(account);
         }
+    }
+
+    @Test
+    void testTableField() {
+        List<Student> students = studentDao.selectList(null);
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+
+    // UPDATE mybatis_plus.t_account SET availability=1 WHERE t_id=? AND availability=0
+    @Test
+    void testLogicDelete() {
+        int affectedRows = accountDao.deleteById(1);
+
+        System.out.println(affectedRows > 0 ? "删除成功" : "删除失败");
     }
 
     // 测试插入
