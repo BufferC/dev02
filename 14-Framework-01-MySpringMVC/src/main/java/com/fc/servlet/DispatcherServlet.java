@@ -120,7 +120,12 @@ public class DispatcherServlet extends HttpServlet {
                                 int integerValue = Integer.parseInt(parameter);
                                 params[paramIndex++] = integerValue;
                             } catch (NumberFormatException e) {
-                                System.out.println("当前的类型不匹配：" + parameterType.getTypeName());
+                                try {
+                                    resp.getWriter().print("当前的类型不匹配：" + parameterType.getTypeName());
+
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                }
                             }
                         } else {
                             params[paramIndex++] = parameter;
