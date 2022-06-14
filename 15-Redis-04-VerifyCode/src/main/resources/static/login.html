@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td>账号：</td>
+            <td><input id="username" type="text"></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input id="password" type="password"></td>
+        </tr>
+        <tr>
+            <td>验证码：</td>
+            <td><input id="verify" type="text"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="button" onclick="getVerifyCode()">获取验证码</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" onclick="login()" value="登录">
+            </td>
+        </tr>
+    </table>
+</body>
+<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    // 获取验证码
+    function getVerifyCode() {
+        // 获取用户名
+        var username = $("#username").val();
+
+        $.ajax({
+            url: "user/getVerifyCode",
+            type: "get",
+            data: {"username": username},
+            success: function (resp) {
+                if (resp.success === true) {
+                    alert('获取到的验证码为：' + resp.data);
+                    // 验证码回填
+                    $("#verify").val(resp.data);
+                } else {
+                    alert(resp.message);
+                }
+            }
+        })
+    }
+
+    // 登录
+    function login() {
+        // 获取用户名
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var verify = $("#verify").val();
+
+        $.ajax({
+            url: "user/login",
+            type: "post",
+            data: {"username": username, "password": password, "code": verify},
+            success: function (resp) {
+                if (resp.success === true) {
+                    alert("登录成功")
+                } else {
+                    alert(resp.message);
+                }
+            }
+        })
+    }
+</script>
+</html>

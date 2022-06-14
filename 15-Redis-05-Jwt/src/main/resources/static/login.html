@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td>手机号：</td>
+            <td><input id="phone" type="text"></td>
+        </tr>
+        <tr>
+            <td>验证码：</td>
+            <td><input id="verify" type="text"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button type="button" onclick="getVerifyCode()">获取验证码</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" onclick="login()" value="登录">
+            </td>
+        </tr>
+    </table>
+</body>
+<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    // 获取验证码
+    function getVerifyCode() {
+        // 手机号
+        var phone = $("#phone").val();
+
+        $.ajax({
+            url: "user/getVerifyCode",
+            type: "get",
+            data: {"phone": phone},
+            success: function (resp) {
+                if (resp.success === true) {
+                    alert('获取到的验证码为：' + resp.data);
+                    // 验证码回填
+                    $("#verify").val(resp.data);
+                } else {
+                    alert(resp.message);
+                }
+            }
+        })
+    }
+
+    // 登录
+    function login() {
+        // 获取用户名
+        var phone = $("#phone").val();
+        var verify = $("#verify").val();
+
+        $.ajax({
+            url: "user/login",
+            type: "post",
+            data: {"phone": phone, "code": verify},
+            success: function (resp) {
+                if (resp.success === true) {
+                    alert("登录成功");
+
+                    // token进行存储
+                    localStorage.setItem("token", resp.data);
+
+                    // 登录成功后跳转到登录页面
+                    $(location).attr('href', '/index.html');
+                } else {
+                    alert(resp.message);
+                }
+            }
+        })
+    }
+</script>
+</html>

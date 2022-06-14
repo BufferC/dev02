@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+    <h1 align="center" style="color: greenyellow">欢迎来到主页</h1>
+    <h1 align="center" style="color: blue"><button type="button" onclick="logout()">退出</button></h1>
+</body>
+<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    var token = localStorage.getItem("token");
+
+    if (token === null) {
+        alert('登录信息已失效，请重新登录');
+        $(location).attr('href', '/login.html');
+    }
+</script>
+<script>
+    function logout() {
+        var token = localStorage.getItem("token");
+
+        $.ajax({
+            url: "user/logout",
+            data: {"token": token},
+            success: function (resp) {
+                if (resp.success === true) {
+                    // 移除token
+                    localStorage.removeItem("token");
+
+                    // 刷新当前页面
+                    location.reload();
+                } else {
+                    alert(resp.message);
+                }
+            }
+        })
+    }
+</script>
+</html>
