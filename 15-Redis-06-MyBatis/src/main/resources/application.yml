@@ -1,0 +1,25 @@
+spring:
+  redis:
+    host: 192.168.204.156
+    port: 6379
+    password: root
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dev02?useSSL=false
+    username: root
+    password: root
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启二级缓存【默认开启】
+    cache-enabled: true
+  mapper-locations: classpath:com/fc/mapper/*.xml
+  type-aliases-package: com.fc.entity
